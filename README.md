@@ -79,7 +79,7 @@ generative adversarial networks)는 생성형 모델 기반의 이상치 감지 
 
 
 <details>
- <summary>* MIN(Moire Inpainting Network) 모델 </summary>
+ <summary> MIN(Moire Inpainting Network) 모델 </summary>
   
   * [모델 전체 코드](models/MIN.py)
     * [제안하는 손실함수](https://github.com/kkimtaejung/Research-for-Moire-3D-Reconstruction/blob/main/models/MIN.py#L33-L84)
@@ -104,9 +104,12 @@ generative adversarial networks)는 생성형 모델 기반의 이상치 감지 
     
     : 각각의 판별자, 생성자 갱신 과정에서 제안하는 손실함수 적용
     * [학습 출력 로그](https://github.com/kkimtaejung/Research-for-Moire-3D-Reconstruction/blob/main/models/MIN.py#L598-L608), [학습/테스트 결과 시각화](https://github.com/kkimtaejung/Research-for-Moire-3D-Reconstruction/blob/main/models/MIN.py#L610-L620), [학습된 모델 저장](https://github.com/kkimtaejung/Research-for-Moire-3D-Reconstruction/blob/main/models/MIN.py#L622-L629), [테스트 모델 로드](https://github.com/kkimtaejung/Research-for-Moire-3D-Reconstruction/blob/main/models/MIN.py#L631-L634)
-    
+
 </details>
-* 모델 파라미터 설정
+
+<details>
+
+<summary> 모델 파라미터 설정 </summary> 
   * [모델 사전 설정 코드](train.py)
     
     * [데이터 경로 로드 설정](https://github.com/kkimtaejung/Research-for-Moire-3D-Reconstruction/blob/main/train.py#L25-L27)
@@ -122,7 +125,11 @@ generative adversarial networks)는 생성형 모델 기반의 이상치 감지 
     
     : 모델 생성/로드/저장, 학습 수, 학습 시간, loss 로그 TXT 파일 생성
 
-* 학습 데이터 불러오기
+</details>
+
+<details>
+
+<summary> 학습 데이터 불러오기 </summary> 
   * [실제 데이터 로드 코드](util/data_load.py) 입니다.
   
     * [데이터 파일 로드](https://github.com/kkimtaejung/Research-for-Moire-3D-Reconstruction/blob/main/util/data_load.py#L20-L27)
@@ -132,7 +139,11 @@ generative adversarial networks)는 생성형 모델 기반의 이상치 감지 
     
     : 영상 및 마스크 크기 재설정, 토치 변환, 정규화 과정을 통해 학습에 맞게 재구성
 
-* 모델 학습
+</details>
+
+<details>
+
+<summary> 모델 학습 </summary> 
   * [모델 학습 코드](train.py)
     
     * [모델 저장](https://github.com/kkimtaejung/Research-for-Moire-3D-Reconstruction/blob/main/train.py#L103-L110)
@@ -145,7 +156,11 @@ generative adversarial networks)는 생성형 모델 기반의 이상치 감지 
     
     : 학습 후 결과 시각화하여 저장, 학습 수, 학습 시간 등 정보 출력
 
-* 테스트 데이터 불러오기
+</details>
+
+<details>
+
+<summary> 테스트 데이터 불러오기 </summary> 
   * [테스트 데이터 로드 코드](util/data_load_test.py)
     * [데이터 파일 로드](https://github.com/kkimtaejung/Research-for-Moire-3D-Reconstruction/blob/main/util/data_load_test.py#L20-L26)
     
@@ -154,8 +169,11 @@ generative adversarial networks)는 생성형 모델 기반의 이상치 감지 
     
     : 학습 과정과 동일
 
+</details>
 
-* 학습된 모델 테스트
+<details>
+
+<summary> 학습된 모델 테스트 </summary> 
   * [모델 테스트 코드](test.py)
     
     * [학습 모델 로드](https://github.com/kkimtaejung/Research-for-Moire-3D-Reconstruction/blob/main/test.py#L108-L110)
@@ -167,6 +185,8 @@ generative adversarial networks)는 생성형 모델 기반의 이상치 감지 
     * [테스트 결과 시각화](https://github.com/kkimtaejung/Research-for-Moire-3D-Reconstruction/blob/main/test.py#L125-L128)
     
     : 학습 과정과 동일, 결과 최종적으로 복원된 펼쳐진 위상 맵(Unwrap)으로 높이 복원 가능
+
+</details>
 
 --------------
 
