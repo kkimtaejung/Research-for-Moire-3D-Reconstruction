@@ -77,7 +77,10 @@ generative adversarial networks)는 생성형 모델 기반의 이상치 감지 
 
 ## 코드 설명
 
-* MIN(Moire Inpainting Network) 모델
+
+<details>
+ <summary>* MIN(Moire Inpainting Network) 모델 </summary>
+  
   * [모델 전체 코드](models/MIN.py)
     * [제안하는 손실함수](https://github.com/kkimtaejung/Research-for-Moire-3D-Reconstruction/blob/main/models/MIN.py#L33-L84)
     
@@ -101,7 +104,8 @@ generative adversarial networks)는 생성형 모델 기반의 이상치 감지 
     
     : 각각의 판별자, 생성자 갱신 과정에서 제안하는 손실함수 적용
     * [학습 출력 로그](https://github.com/kkimtaejung/Research-for-Moire-3D-Reconstruction/blob/main/models/MIN.py#L598-L608), [학습/테스트 결과 시각화](https://github.com/kkimtaejung/Research-for-Moire-3D-Reconstruction/blob/main/models/MIN.py#L610-L620), [학습된 모델 저장](https://github.com/kkimtaejung/Research-for-Moire-3D-Reconstruction/blob/main/models/MIN.py#L622-L629), [테스트 모델 로드](https://github.com/kkimtaejung/Research-for-Moire-3D-Reconstruction/blob/main/models/MIN.py#L631-L634)
-
+    
+</details>
 * 모델 파라미터 설정
   * [모델 사전 설정 코드](train.py)
     
