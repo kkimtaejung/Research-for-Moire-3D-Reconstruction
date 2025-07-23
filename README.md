@@ -10,6 +10,9 @@
        style="width:1240px; max-width:90%; border-radius:28px; box-shadow:0 20px 18px #0002; margin-bottom: 16px;">
 </div>
 
+<details>
+ <summary> 2D PCB 영상의 정확한 3D 높이 복원을 위해 모아레 방식의 문제점을 해결하는 생성형 모델을 설계 </summary>
+
 - 모아레 패턴(Moire pattern)이란 주기적인 파형들이 겹쳐 생성되는 물결무늬를 말합니다. 모아레 광학계를 통해 객체에 모아레 패턴을 투영하여 모아레 영상을 취득합니다. 모아레 영상 복원은 이러한 2D 모아레 영상을 통해 3D 높이로의 복원을 진행하는 과정입니다.
 
 - 인쇄회로기판(PCB, Printed Circuit Board)의 불량 검사를 위해 모아레 영상 복원을 사용합니다. 일상 속 전자제품의 핵심 기능을 담당하는 PCB의 불량 여부는 매우 중요하며, 불량 여부를 판별하기 위해 3D 높이 정보를 필요로합니다.
@@ -18,11 +21,16 @@
 
 - 최종적으로 2D PCB 영상 속 부품들에 대해 정확한 3D 높이로의 복원을 진행하여 불량 검사를 진행합니다.
 
+<details>
+
 -------------
 
 ## 제안 방식
 
 #### 모델 구조
+
+<details>
+ <summary> 두 스테이지 구조로 두 번에 걸쳐 그림자와 빛 반사를 복원하여 정확한 PCB 높이 복원까지의 과정 </summary>
 
 - MIN (Moire Inpainting Network) 모델은 두 스테이지(First stage, Second stage)로 나뉘어 두 번에 걸쳐 그림자와 빛 반사 영역을 복원합니다.
 
@@ -32,12 +40,16 @@
 
 - 최종적으로 복원된 펼쳐진 위상 맵으로 정확한 PCB 높이 복원이 가능합니다.
 
+<details>
 
 <div align="center">
   <img src="figure/model-architecture.png" width="700" alt="f-AnoGAN architecture">
 </div>
 
 #### 이상치 감지 모델 구조
+
+<details>
+ <summary> 그림자와 빛 반사 영역을 정밀하게 정의하기 위한 핵심 생성형 기반 영상 이상치 감지 모델 </summary>
 
 - PAM (Position Adaptive Module)은 복원에 앞서 정밀한 그림자와 빛 반사 영역을 찾기 위해 설계된 모듈입니다.
 
@@ -46,6 +58,7 @@ generative adversarial networks)는 생성형 모델 기반의 이상치 감지 
 
 - f-AnoGAN 모델을 활용한 PAM을 통해 정밀한 그림자와 빛 반사 영역을 정의할 수 있습니다.
 
+<details>
 
 <div align="center">
   <img src="figure/f-anogan-arch.png" width="700" alt="f-AnoGAN architecture">
@@ -56,18 +69,28 @@ generative adversarial networks)는 생성형 모델 기반의 이상치 감지 
 
 ## 데이터셋
 
+<details>
+ <summary> 모아레 광학계(좌)를 통해 노이즈 데이터 취득, 현미경(우)를 통해 정답 데이터 취득 </summary>
+
 - 노이즈(그림자, 빛 반사) 데이터: 자체 제작한 그림자와 빛 반사가 존재하는 2D PCB 모아레 영상을 활용하였습니다.
 연구실내 보유중인 모아레 광학계(좌측 그림)를 통해 각 PCB 별 모아레 영상을 취득하여 학습에 사용하였습니다.
 
 - 정답 데이터: 그림자와 빛 반사가 존재하지 않는 정답 2D PCB 모아레 영상의 경우 연구실내 보유중인 현미경(우측 그림)을 통해 실제 높이 값을 측정하여 제작되었고, 이를 학습에 사용하였습니다.
 
+<details>
+
 <div align="center">
   <img src="figure/광학계&현미경-re.png" width="350" alt="f-AnoGAN architecture">
 </div>
 
+<details>
+ <summary> 취득된 데이터의 모습 </summary>
+
 - 노이즈 데이터는 모아레 광학계를 통해 취득된 실제 PCB 영상(PCB image)에 대한 4장의 모아레 영상(0도, 90도, 180도, 270도) 입니다.
 
 - 정답 데이터는 현미경을 통해 취득된 실제 PCB 높이 값(real PCB height value)을 이용하여 평면(ground)에 투영된 모아레 영상을 가지고 데이터를 생성합니다.
+
+<details>
 
 <div align="center">
   <img src="figure/데이터셋.png" width="700" alt="f-AnoGAN architecture">
@@ -110,6 +133,7 @@ generative adversarial networks)는 생성형 모델 기반의 이상치 감지 
 <details>
 
 <summary> 모델 파라미터 설정 </summary> 
+
   * [모델 사전 설정 코드](train.py)
     
     * [데이터 경로 로드 설정](https://github.com/kkimtaejung/Research-for-Moire-3D-Reconstruction/blob/main/train.py#L25-L27)
@@ -130,6 +154,7 @@ generative adversarial networks)는 생성형 모델 기반의 이상치 감지 
 <details>
 
 <summary> 학습 데이터 불러오기 </summary> 
+
   * [실제 데이터 로드 코드](util/data_load.py) 입니다.
   
     * [데이터 파일 로드](https://github.com/kkimtaejung/Research-for-Moire-3D-Reconstruction/blob/main/util/data_load.py#L20-L27)
@@ -144,6 +169,7 @@ generative adversarial networks)는 생성형 모델 기반의 이상치 감지 
 <details>
 
 <summary> 모델 학습 </summary> 
+
   * [모델 학습 코드](train.py)
     
     * [모델 저장](https://github.com/kkimtaejung/Research-for-Moire-3D-Reconstruction/blob/main/train.py#L103-L110)
@@ -161,6 +187,7 @@ generative adversarial networks)는 생성형 모델 기반의 이상치 감지 
 <details>
 
 <summary> 테스트 데이터 불러오기 </summary> 
+
   * [테스트 데이터 로드 코드](util/data_load_test.py)
     * [데이터 파일 로드](https://github.com/kkimtaejung/Research-for-Moire-3D-Reconstruction/blob/main/util/data_load_test.py#L20-L26)
     
@@ -174,6 +201,7 @@ generative adversarial networks)는 생성형 모델 기반의 이상치 감지 
 <details>
 
 <summary> 학습된 모델 테스트 </summary> 
+
   * [모델 테스트 코드](test.py)
     
     * [학습 모델 로드](https://github.com/kkimtaejung/Research-for-Moire-3D-Reconstruction/blob/main/test.py#L108-L110)
