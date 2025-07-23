@@ -33,7 +33,7 @@
 - 최종적으로 복원된 펼쳐진 위상 맵으로 정확한 PCB 높이 복원이 가능합니다.
 
 
-<div align="left">
+<div align="center">
   <img src="figure/model-architecture.png" width="700" alt="f-AnoGAN architecture">
 </div>
 
@@ -47,7 +47,7 @@ generative adversarial networks)는 생성형 모델 기반의 이상치 감지 
 - f-AnoGAN 모델을 활용한 PAM을 통해 정밀한 그림자와 빛 반사 영역을 정의할 수 있습니다.
 
 
-<div align="left">
+<div align="center">
   <img src="figure/f-anogan-arch.png" width="700" alt="f-AnoGAN architecture">
 </div>
 
@@ -61,7 +61,7 @@ generative adversarial networks)는 생성형 모델 기반의 이상치 감지 
 
 - 정답 데이터: 그림자와 빛 반사가 존재하지 않는 정답 2D PCB 모아레 영상의 경우 연구실내 보유중인 현미경(우측 그림)을 통해 실제 높이 값을 측정하여 제작되었고, 이를 학습에 사용하였습니다.
 
-<div align="left">
+<div align="center">
   <img src="figure/광학계&현미경-re.png" width="350" alt="f-AnoGAN architecture">
 </div>
 
@@ -69,7 +69,7 @@ generative adversarial networks)는 생성형 모델 기반의 이상치 감지 
 
 - 정답 데이터는 현미경을 통해 취득된 실제 PCB 높이 값(real PCB height value)을 이용하여 평면(ground)에 투영된 모아레 영상을 가지고 데이터를 생성합니다.
 
-<div align="left">
+<div align="center">
   <img src="figure/데이터셋.png" width="700" alt="f-AnoGAN architecture">
 </div>
 
@@ -77,7 +77,7 @@ generative adversarial networks)는 생성형 모델 기반의 이상치 감지 
 
 ## 코드 설명
 
-* MIN(Moire Inpainting Network) 모델 설명
+* MIN(Moire Inpainting Network) 모델
   * [모델 전체 코드](models/MIN.py)
     * [제안하는 손실함수](https://github.com/kkimtaejung/Research-for-Moire-3D-Reconstruction/blob/main/models/MIN.py#L33-L84)
     
